@@ -46,7 +46,7 @@ if(${result} EQUAL 0)
   message(WARNING
     "Test executable '${TEST_EXECUTABLE}' contains no tests!\n"
   )
-elseif(${result} LESS 0)
+elseif(${result} EQUAL 255) # Return codes are stored as 8-bit unsigned int, so -1 becomes 255
   message(FATAL_ERROR
     "Error running test executable '${TEST_EXECUTABLE}':\n"
     "  Result: ${result}\n"
@@ -67,7 +67,7 @@ if(${reporters_result} EQUAL 0)
   message(WARNING
     "Test executable '${TEST_EXECUTABLE}' contains no reporters!\n"
   )
-elseif(${reporters_result} LESS 0)
+elseif(${reporters_result} EQUAL 255)
   message(FATAL_ERROR
     "Error running test executable '${TEST_EXECUTABLE}':\n"
     "  Result: ${reporters_result}\n"
